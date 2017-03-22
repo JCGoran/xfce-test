@@ -42,15 +42,24 @@ RUN \
 #    echo "developer:x:${uid}:" >> /etc/group && \
 #    chown ${uid}:${gid} -R /home/developer
 
-# Grab garcon from master
-RUN git clone git://git.xfce.org/xfce/garcon \
+# Grab garcon
+RUN git clone -b garcon-0.5.0 git://git.xfce.org/xfce/garcon \
   && cd garcon \
   && ./autogen.sh \
   && make \
   && make install \
   && ldconfig
 
-# Grab xfce4-panel from master
+# Grab exo
+RUN git clone -b exo-0.11.2 git://git.xfce.org/xfce/exo \
+  && cd exo \
+  && ./autogen.sh \
+  && make \
+  && make install \
+  && ldconfig
+
+
+# Grab xfce4-panel
 RUN git clone git://git.xfce.org/xfce/xfce4-panel \
   && cd xfce4-panel \
   && ./autogen.sh --enable-debug --enable-maintainer-mode --host=x86_64-linux-gnu \
@@ -59,15 +68,15 @@ RUN git clone git://git.xfce.org/xfce/xfce4-panel \
   && make \
   && make install
 
-# Grab xfce4-clipman from master
-RUN git clone git://git.xfce.org/panel-plugins/xfce4-clipman-plugin \
+# Grab xfce4-clipman
+RUN git clone -b 1.4.1 git://git.xfce.org/panel-plugins/xfce4-clipman-plugin \
   && cd /xfce4-clipman-plugin \
   && ./autogen.sh \
   && make \
   && make install
 
-# Grab xfce4-appfinder from master
-RUN git clone git://git.xfce.org/xfce/xfce4-appfinder \
+# Grab xfce4-appfinder
+RUN git clone -b xfce4-appfinder-4.12.0 git://git.xfce.org/xfce/xfce4-appfinder \
   && cd xfce4-appfinder \
   && ./autogen.sh --prefix=/usr \
   && make \
