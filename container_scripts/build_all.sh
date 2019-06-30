@@ -6,6 +6,7 @@ XFCE_BASE=git://git.xfce.org
 REPOS=( "xfce-4.14pre2 ${XFCE_BASE}/xfce/libxfce4ui libxfce4ui")
 REPOS+=("xfce-4.14pre2 ${XFCE_BASE}/xfce/libxfce4util libxfce4util")
 REPOS+=("xfce-4.14pre2 ${XFCE_BASE}/xfce/exo exo")
+REPOS+=("xfce-4.14pre2 ${XFCE_BASE}/xfce/xfce4-dev-tools xfce4-dev-tools")
 REPOS+=("xfce-4.14pre2 ${XFCE_BASE}/xfce/xfce4-panel xfce4-panel")
 REPOS+=("xfce-4.14pre2 ${XFCE_BASE}/xfce/garcon garcon")
 REPOS+=("xfce-4.14pre2 ${XFCE_BASE}/xfce/thunar thunar")
