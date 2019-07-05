@@ -24,67 +24,6 @@ REPOS+=("xfce-4.14pre2 ${XFCE_BASE}/apps/xfce4-screenshooter xfce4-screenshooter
 REPOS+=("xfce-4.14pre2 ${XFCE_BASE}/panel-plugins/xfce4-whiskermenu-plugin xfce4-whiskermenu-plugin")
 REPOS+=("xfce-4.14pre2 ${XFCE_BASE}/panel-plugins/xfce4-clipman-plugin xfce4-clipman-plugin")
 
-## TBD...
-## Grab xfce4-dev-tools from master
-#RUN cd git \
-#  && git clone git://git.xfce.org/xfce/xfce4-dev-tools \
-#  && cd xfce4-dev-tools \
-#  && ./autogen.sh $AUTOGEN_OPTIONS \
-#  && make \
-#  && make install \
-#  && echo "$(pwd): $(git describe)" >> ~xfce-test_user/version_info.txt \
-#  && ldconfig
-
-## Grab libxfce4util from master
-#RUN cd git \
-#  && git clone git://git.xfce.org/xfce/libxfce4util \
-#  && cd libxfce4util \
-#  && ./autogen.sh $AUTOGEN_OPTIONS \
-#  && make \
-#  && make install \
-#  && echo "$(pwd): $(git describe)" >> ~xfce-test_user/version_info.txt \
-#  && ldconfig
-
-## Grab xfconf from master
-#RUN cd git \
-#  && git clone git://git.xfce.org/xfce/xfconf \
-#  && cd xfconf \
-#  && ./autogen.sh $AUTOGEN_OPTIONS \
-#  && make \
-#  && make install \
-#  && echo "$(pwd): $(git describe)" >> ~xfce-test_user/version_info.txt \
-#  && ldconfig
-
-## Grab libxfce4ui from master
-#RUN cd git \
-#  && git clone git://git.xfce.org/xfce/libxfce4ui \
-#  && cd libxfce4ui \
-#  && ./autogen.sh $AUTOGEN_OPTIONS \
-#  && make \
-#  && make install \
-#  && echo "$(pwd): $(git describe)" >> ~xfce-test_user/version_info.txt \
-#  && ldconfig
-
-## Grab garcon from master
-#RUN cd git \
-#  && git clone git://git.xfce.org/xfce/garcon \
-#  && cd garcon \
-#  && ./autogen.sh $AUTOGEN_OPTIONS \
-#  && make \
-#  && make install \
-#  && echo "$(pwd): $(git describe)" >> ~xfce-test_user/version_info.txt \
-#  && ldconfig
-
-## Grab exo from master
-#RUN cd git \
-#  && git clone git://git.xfce.org/xfce/exo \
-#  && cd exo \
-#  && ./autogen.sh $AUTOGEN_OPTIONS \
-#  && make \
-#  && make install \
-#  && echo "$(pwd): $(git describe)" >> ~xfce-test_user/version_info.txt \
-#  && ldconfig
-
 
 for tuple in "${REPOS[@]}"; do
     set -- $tuple
@@ -97,7 +36,7 @@ for tuple in "${REPOS[@]}"; do
     cd $NAME
     git checkout $BRANCH || echo "Branch $BRANCH not found - leaving default"
     ./autogen.sh $AUTOGEN_OPTIONS
-    make
+    make -j8
     make install
     echo "$(pwd): $(git describe)" >> ~xfce-test_user/version_info.txt
 done
