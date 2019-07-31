@@ -2,7 +2,7 @@
 
 XFCE_BASE=git://git.xfce.org
 
-MAIN_BRANCH=master
+MAIN_BRANCH=xfce-4.14pre3
 
 # (BRANCH URL NAME) tuples:
 REPOS=( "${MAIN_BRANCH} ${XFCE_BASE}/xfce/libxfce4ui libxfce4ui")
